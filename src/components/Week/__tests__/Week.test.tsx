@@ -6,9 +6,9 @@ describe(`<Week />`, () => {
 	test(`should render`, () => {
 		expect.assertions(1);
 
-		const { getByText, getByTitle } = render(<Week data={{ text: '123', color: 'red' }} />);
+		const { getByTitle } = render(<Week title={'test123'} />);
 		// const week = getByText(`O`);
-		const week = getByTitle(`123`);
+		const week = getByTitle(`test123`);
 		
 		expect(week).toBeInTheDocument();
 	});

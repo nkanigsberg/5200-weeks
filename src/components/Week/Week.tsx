@@ -1,20 +1,24 @@
 import React, { FC } from 'react';
 import useStyles from './useStyles';
 
-import * as types from 'types';
+// import * as types from 'types';
 
-type Props = {
-	data: types.IWeek;
-}
+export type Props = {
+	title?: string;
+	backgroundColor?: string;
+	onClick?: React.ButtonHTMLAttributes<HTMLButtonElement>['onClick'];
+};
 
 const Week: FC<Props> = ({ 
-	data
+	title,
+	backgroundColor,
+	onClick,
  }) => {
-	const { circle } = useStyles({ backgroundColor: data.color });
+	const { circle } = useStyles({ backgroundColor });
 
 	return (
-		<div className={circle} title={data.text}>
-		</div>
+		<button type="button" className={circle} title={title} onClick={onClick} >
+		</button>
 	)
 }
 

@@ -2,14 +2,17 @@ import React from 'react';
 
 import { Year } from './components/Year';
 
-import * as types from 'types';
+import { WeekProps } from './components/Week';
+
+// import * as types from 'types';
+// import * as types from 'types';
 
 function App() {
-	const weeks: types.IWeek[] = [];
-	for (let i = 0; i < 52; i++) {
+	const weeks: WeekProps[] = [];
+	for (let i = 1; i <= 52; i++) {
 		weeks.push({
-			text: `week${i}`,
-			color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+			title: `week${i}`,
+			backgroundColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
 		});
 	}
 

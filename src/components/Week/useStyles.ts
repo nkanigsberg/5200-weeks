@@ -6,11 +6,13 @@ export type StyleProps = {
 
 const useStyles = createUseStyles({
 	circle: {
-		width: '2rem',
-		height: '2rem',
+		width: '1.5rem',
+		height: '1.5rem',
 		borderRadius: '50%',
 		border: '1px solid #ccc',
 		backgroundColor: ({ backgroundColor }: StyleProps) => backgroundColor ? backgroundColor : '#FFF',
+		margin: '0.05rem',
+		cursor: 'pointer',
 	},
 });
 

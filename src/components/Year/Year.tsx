@@ -1,32 +1,37 @@
 import React, { FC } from 'react';
 import useStyles from './useStyles';
 
-import { Week } from '../Week';
+import { Week, WeekProps } from '../Week';
 
-import * as types from 'types';
-
+// import * as types from 'types';
 
 type Props = {
 	number: number;
-	weeks: types.IWeek[];
+	weeks: WeekProps[];
 }
 
 const Year: FC<Props> = ({
 	number,
 	weeks,
 }) => {
-	return (
-		<div>
-			<h2>Year {number}</h2>
+	const { root, titleStyles, weekListStyles } = useStyles();
 
-			{weeks.map((week, index) => {
-				return (
-					<Week
-						key={index}
-						data={week}
-					/>
-				)
-			})}
+	return (
+		<div className={root}>
+			<h2 className={titleStyles}>{number}</h2>
+
+			<ul className={weekListStyles}>
+				{weeks.map((week, index) => {
+					return (
+						<li key={index}>
+							<Week
+								title={week.title}
+								backgroundColor={week.backgroundColor}
+							/>
+						</li>
+					)
+				})}
+			</ul>
 		</div>
 	)
 }
