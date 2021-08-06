@@ -5,7 +5,7 @@ import { Week, WeekProps } from '../Week';
 
 // import * as types from 'types';
 
-type Props = {
+export type Props = {
 	number: number;
 	weeks: WeekProps[];
 }

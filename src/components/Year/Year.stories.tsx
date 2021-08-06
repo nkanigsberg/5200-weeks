@@ -2,38 +2,36 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Year } from './';
+import { WeekProps } from 'components/Week';
 
 export default {
   title: '5200Weeks/Year',
   component: Year,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as ComponentMeta<typeof Year>;
 
 const Template: ComponentStory<typeof Year> = (args) => <Year {...args} />;
 
-// export const Default = Template.bind({});
-// Default.args = {
-//   // primary: true,
-//   // label: 'Button',
-// 	title: 'test',
-// 	backgroundColor: '#FFF',
-// };
 
-// export const Secondary = Template.bind({});
-// Secondary.args = {
-//   label: 'Button',
-// };
+const generateWeeks = ({ randomColor }: {randomColor?: boolean}) => {
+	const result: WeekProps[] = [];
+	for (let i = 1; i <= 52; i++) {
+		result.push({
+			title: `week${i}`,
+			backgroundColor: randomColor ? `#${Math.floor(Math.random() * 16777215).toString(16)}` : '#FFF',
+		});
+	}	
 
-// export const Large = Template.bind({});
-// Large.args = {
-//   size: 'large',
-//   label: 'Button',
-// };
+	return result;
+};
 
-// export const Small = Template.bind({});
-// Small.args = {
-//   size: 'small',
-//   label: 'Button',
-// };
+export const Empty = Template.bind({});
+Empty.args = {
+	number: 42,
+	weeks: generateWeeks({}),
+};
+
+export const RandomColors = Template.bind({});
+RandomColors.args = {
+	number: 42,
+	weeks: generateWeeks({ randomColor: true }),
+};
